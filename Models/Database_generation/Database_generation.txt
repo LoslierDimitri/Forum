@@ -1,0 +1,31 @@
+EXPORT DATABASE TABLES:
+D:\Programmes (x86)\Apache24\htdocs\Forum\Models\Database_generation
+
+-------------------------------------------
+
+truncate project_forum.comments;
+truncate project_forum.topics;
+truncate project_forum.users;
+
+insert into users (image, name, mail, type, password) values ("", "alpha", "alpha@mail", "a", "alpha_password");
+insert into users (image, name, mail, type, password) values ("", "beta", "beta@mail", "u", "beta_password");
+insert into users (image, name, mail, type, password) values ("", "charlie", "charlie@mail", "u", "charlie_password");
+insert into users (image, name, mail, type, password) values ("", "delta", "delta@mail", "u", "delta_password");
+insert into users (image, name, mail, type, password) values ("", "epsilon", "epsilon@mail", "u", "epsilon_password");
+
+insert into topics (name, date) values ("topic_1", "2022-01-01");
+insert into topics (name, date) values ("topic_2", "2022-02-02");
+insert into topics (name, date) values ("topic_3", "2022-07-07");
+
+insert into comments (text, id_user, id_topic, date) values ("comment_1", 3, 2, "2022-03-03");
+insert into comments (text, id_user, id_topic, date) values ("comment_2", 2, 1, "2022-04-04");
+insert into comments (text, id_user, id_topic, date) values ("comment_3", 1, 2, "2022-05-05");
+insert into comments (text, id_user, id_topic, date) values ("comment_4", 3, 1, "2022-06-06");
+insert into comments (text, id_user, id_topic, date) values ("comment_5", 3, 1, "2022-07-06");
+insert into comments (text, id_user, id_topic, date) values ("comment_6", 3, 3, "2022-06-05");
+insert into comments (text, id_user, id_topic, date) values ("comment_7", 4, 1, "2022-08-06");
+insert into comments (text, id_user, id_topic, date) values ("comment_8", 3, 2, "2022-06-01");
+insert into comments (text, id_user, id_topic, date) values ("comment_9", 5, 1, "2022-06-05");
+insert into comments (text, id_user, id_topic, date) values ("comment_10", 3, 2, "2022-10-03");
+insert into comments (text, id_user, id_topic, date) values ("comment_11", 2, 3, "2022-12-06");
+insert into comments (text, id_user, id_topic, date) values ("comment_12", 1, 1, "2022-01-09");
