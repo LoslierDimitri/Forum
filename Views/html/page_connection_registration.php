@@ -21,7 +21,7 @@
     include($path_new);
     ?>
 
-<?php
+    <?php
     $path = $_SERVER["DOCUMENT_ROOT"];
     $path_new = $path . "./Forum/Views/components/component_form_registration.php";
     include($path_new);

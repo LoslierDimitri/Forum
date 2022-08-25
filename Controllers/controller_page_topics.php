@@ -118,7 +118,7 @@ form gestion
 */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $database->add_comment($_POST["comment_text"], "1", $topic_id);
+    $database->add_comment($_POST["comment_text"], $_SESSION["id"], $topic_id);
 
     header("Refresh:0");
     exit();

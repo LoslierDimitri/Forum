@@ -1,3 +1,3 @@
 <?php
-header("Location: ./Controllers/Router.php");
+header("Location: ./Controllers/controller_page_accueil.php");
 ?>

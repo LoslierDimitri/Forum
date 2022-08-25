@@ -21,6 +21,7 @@ class Topic
 ?>
 
 <?php
+error_reporting(E_ALL ^ E_WARNING);
 /*
 get the connection to the database
 */

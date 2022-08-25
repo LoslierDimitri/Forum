@@ -35,11 +35,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result_name = $database->get_user_information("id", "name", $_POST["name"]);
         $result_password = $database->get_user_information("id", "password", $_POST["password"]);
 
-        if ($result_name == $result_password) {
-            echo "you are connected";
-            // $_SESSION["name"] = $database->get_user_information("name", "id", $result_name)[0]->name;
-            // $_SESSION["type"] = $database->get_user_information("type", "id", $result_name);
-            // $_SESSION["id"] = $database->get_user_information("id", "id", $result_name);
+        echo "<pre>";
+        print_r($result_name);
+        echo "</pre>";
+        echo "<pre>";
+        print_r($result_password);
+        echo "</pre>";
+        // die();
+
+        if ($result_name == $result_password && isset($result_name)) {
+            $_SESSION["name"] = $database->get_user_information("name", "name", $_POST["name"])[0]["name"];
+            $_SESSION["type"] = $database->get_user_information("type", "name", $_POST["name"])[0]["type"];
+            $_SESSION["id"] = $database->get_user_information("id", "name", $_POST["name"])[0]["id"];
+
+            // echo $_SESSION["name"];
+            // echo $_SESSION["type"];
+            // echo $_SESSION["id"];
+            // die();
+            
+            header("Location: /Forum/Controllers/controller_page_accueil.php");
+            exit();
         }
     }
     if ($_POST["type"] == "registration") {

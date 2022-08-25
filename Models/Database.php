@@ -96,8 +96,10 @@ class Database
         $this->connection = $this->set_connection();
 
         if ($this->connection != null) {
-            $req = "select " . $select . " from users where " . $information . "=" . $value . ";";
+            $req = "select " . $select . " from users where ".$information."=:value;";
             $stmt = $this->connection->prepare($req);
+            // $stmt->bindValue(":information", $information);
+            $stmt->bindValue(":value", $value);
             $stmt->execute();
             $result = $stmt->fetchAll();
 
