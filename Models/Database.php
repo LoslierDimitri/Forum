@@ -96,7 +96,7 @@ class Database
         $this->connection = $this->set_connection();
 
         if ($this->connection != null) {
-            $req = "select " . $select . " from users where ".$information."=:value;";
+            $req = "select " . $select . " from users where " . $information . "=:value;";
             $stmt = $this->connection->prepare($req);
             // $stmt->bindValue(":information", $information);
             $stmt->bindValue(":value", $value);
@@ -162,6 +162,27 @@ class Database
             $stmt->bindValue(":name", $name);
             $stmt->bindValue(":mail", $mail);
             $stmt->bindValue(":password", $password);
+            $stmt->execute();
+
+            return;
+        }
+
+        $this->connection = $this->delete_connection();
+    }
+
+    /*
+    update user
+    */
+    public function update_user($id, $select, $value)
+    {
+        $this->connection = $this->set_connection();
+
+        if ($this->connection != null) {
+            $req = 'update users set ' . $select . ' =:value where id = ' . $id . ';';
+            $stmt = $this->connection->prepare($req);
+            // $stmt->bindValue(":name", $name);
+            $stmt->bindValue(":value", $value);
+            // $stmt->bindValue(":password", $password);
             $stmt->execute();
 
             return;

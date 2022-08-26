@@ -92,6 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     for ($i = 0; $i < count($result); $i++) {
         $new_topic_id = $result[$i]["id"];
     }
+    $database->add_comment($_POST["comment_text"], $_SESSION["id"], $new_topic_id);
 
     header("Location: ./controller_page_topics.php?topic_id=" . $new_topic_id . "");
     exit();

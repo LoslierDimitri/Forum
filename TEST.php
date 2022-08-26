@@ -5,14 +5,14 @@ require($path_new);
 
 $database = new Database();
 
-$result = $database->get_user_information("id", "name", "epsilon");
-echo "<pre>";
-print_r($result);
-echo "</pre>";
-echo $result[0]["id"];
+// $result = $database->get_user_information("id", "name", "epsilon");
+// echo "<pre>";
+// print_r($result);
+// echo "</pre>";
+// echo $result[0]["id"];
 
-$result = $database->get_user_information("id", "password", "epsilon_password");
-print_r($result);
+// $result = $database->get_user_information("id", "password", "epsilon_password");
+// print_r($result);
 
 // $result = $database->get_commments_information_by_topic_id("text", 1);
 
@@ -70,4 +70,25 @@ print_r($result);
 //         $this->date = $date;
 //     }
 // }
+?>
+
+<?php
+$dir    = './Views/images';
+$files1 = scandir($dir, 1);
+// $files2 = scandir($dir, 1);
+
+echo "<pre>";
+print_r($files1, 1);
+echo "</pre>";
+
+// unset($files1[0]);
+// unset($files1[1]);
+
+unset($files1[count($files1) - 1]);
+unset($files1[count($files1) - 1]);
+
+echo "<pre>";
+print_r($files1);
+echo "</pre>";
+// print_r($files2);
 ?>
