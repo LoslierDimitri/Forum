@@ -178,11 +178,11 @@ class Database
         $this->connection = $this->set_connection();
 
         if ($this->connection != null) {
-            $req = 'update users set ' . $select . ' =:value where id = ' . $id . ';';
+            $req = 'update users set ' . $select . ' =:value where id =:id;';
             $stmt = $this->connection->prepare($req);
             // $stmt->bindValue(":name", $name);
             $stmt->bindValue(":value", $value);
-            // $stmt->bindValue(":password", $password);
+            $stmt->bindValue(":id", $id);
             $stmt->execute();
 
             return;

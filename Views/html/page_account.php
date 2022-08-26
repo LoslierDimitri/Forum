@@ -16,19 +16,14 @@
     ?>
 
     <p>ID: <?= $User->id ?></p>
-    <p>IMAGE: <?= $User->image[0]["image"] ?> <?php
-                                                /*
-                                                $path = $_SERVER["DOCUMENT_ROOT"];
-                                                $path_new = $path . "./Forum/Views/components/component_form_add_image.php";
-                                                include($path_new);*/
-                                                ?></p>
+    <p>IMAGE:</p>
+    <img src="../Views/images/<?= $User->image[0]["image"] ?>" alt="">
     <p>IMAGE SELECTION:</p>
     <?php
     $path = $_SERVER["DOCUMENT_ROOT"];
     $path_new = $path . "./Forum/Views/components/component_form_add_image.php";
     include($path_new);
     ?>
-    <img src="../Views/images/<?php $User->image[0]["image"] ?>" alt="">
     <p>NAME: <?= $User->name[0]["name"] ?></p>
     <p>MAIL: <?= $User->mail[0]["mail"] ?></p>
     <p>TYPE: <?= $User->type[0]["type"] ?></p>
@@ -41,9 +36,6 @@
     ?>
 
     <?php
-    $dir    = './';
-    $files1 = scandir($dir);
-    print_r($files1);
     ?>
 </body>
 
