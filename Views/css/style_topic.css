@@ -1,0 +1,25 @@
+.topic {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  border: 2px solid black;
+  border-radius: 20px;
+
+  min-height: 100px;
+
+  background-color: #cbc7f0;
+}
+
+.topic a, .topic p{
+    font-size: 14px;
+    font-family: 'Mulish', sans-serif;
+
+    text-decoration: none;
+    color: black;
+}

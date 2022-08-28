@@ -9,10 +9,10 @@ if (isset($_SESSION["id"]) == false) {
 <?php
 if (isset($_SESSION["id"])) {
 ?>
-    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
-        <input type="text" name="topic_name" value="topic_name" placeholder="topic name">
-        <input type="text" name="comment_text" value="comment_text" placeholder="text">
-        <button type="submit">submit</button>
+    <form class="flex col_100" action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
+        <input class="f_l col_2" type="text" name="topic_name" value="" placeholder="Topic name">
+        <input class="f_l col_7" type="text" name="comment_text" value="" placeholder="Comment">
+        <button class="admin_btn btn f_l col_1" type="submit">Submit</button>
     </form>
 <?php
 }

@@ -1,4 +1,7 @@
-.btn{
+form{
+}
+
+input{
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 30px;
@@ -9,15 +12,6 @@
     margin-right: 10px;
     border: 2px solid black;
     border-radius: 50px;
-    color: black;
-    background-color: #cbc7f0;
     justify-content: center;
 }
 
-.admin_btn{
-    background-color: #cc8080;
-}
-
-.navbar{
-    background-color: #8880cc;
-}

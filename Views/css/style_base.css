@@ -1,0 +1,21 @@
+.red {
+    background-color: red;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e8e7f7;
+}
+
+a{
+    text-decoration: none;
+}
+
+*{
+    font-size: 14px;
+}
+
+a, p{
+    font-family: 'Mulish', sans-serif;
+}
