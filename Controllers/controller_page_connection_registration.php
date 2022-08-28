@@ -6,6 +6,7 @@ include($path_new);
 
 <?php
 error_reporting(E_ALL ^ E_WARNING);
+$password_limit_size_min = 6;
 
 /*
 get the connection to the database
@@ -33,25 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($_POST["type"] == "connection") {
         $result_name = $database->get_user_information("id", "name", $_POST["name"]);
-        $result_password = $database->get_user_information("id", "password", $_POST["password"]);
+        $result_password = $database->get_user_information("password", "id", $result_name[0]["id"]);
 
-        // echo "<pre>";
-        // print_r($result_name);
-        // echo "</pre>";
-        // echo "<pre>";
-        // print_r($result_password);
-        // echo "</pre>";
-        // die();
-
-        if ($result_name == $result_password && $result_name != []) {
+        if (password_verify($_POST["password"], $result_password[0]["password"])) {
             $_SESSION["name"] = $database->get_user_information("name", "name", $_POST["name"])[0]["name"];
             $_SESSION["type"] = $database->get_user_information("type", "name", $_POST["name"])[0]["type"];
             $_SESSION["id"] = $database->get_user_information("id", "name", $_POST["name"])[0]["id"];
-
-            // echo $_SESSION["name"];
-            // echo $_SESSION["type"];
-            // echo $_SESSION["id"];
-            // die();
 
             header("Location: /Forum/Controllers/controller_page_accueil.php");
             exit();
@@ -61,57 +49,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $request_test_name = $database->get_user_information("name", "name", $_POST["name"]);
         $request_test_mail = $database->get_user_information("mail", "mail", $_POST["mail"]);
 
-        if ($request_test_name != $_POST["name"] || $request_test_mail != $_POST["mail"]) {
-            if ($_POST["password"] == $_POST["password_verification"]) {
-                $database->add_user($_POST["name"], $_POST["mail"], $_POST["password"]);
+        if ($request_test_name[0]["name"] != $_POST["name"] && $request_test_mail[0]["mail"] != $_POST["mail"]) {
+            if (($_POST["password"] == $_POST["password_verification"]) && (strlen($_POST["password"]) >= $password_limit_size_min)) {
+                /*
+                password hash
+                */
+                $password_before_hash = $_POST["password"];
+                $password_after_hash = password_hash($password_before_hash, PASSWORD_DEFAULT);
 
-                $result_name = $database->get_user_information("id", "name", $_POST["name"]);
-                $result_password = $database->get_user_information("id", "password", $_POST["password"]);
+                $database->add_user($_POST["name"], $_POST["mail"], $password_after_hash);
 
-                if ($result_name == $result_password && isset($result_name)) {
-                    $_SESSION["name"] = $database->get_user_information("name", "name", $_POST["name"])[0]["name"];
-                    $_SESSION["type"] = $database->get_user_information("type", "name", $_POST["name"])[0]["type"];
-                    $_SESSION["id"] = $database->get_user_information("id", "name", $_POST["name"])[0]["id"];
+                $_SESSION["name"] = $database->get_user_information("name", "name", $_POST["name"])[0]["name"];
+                $_SESSION["type"] = $database->get_user_information("type", "name", $_POST["name"])[0]["type"];
+                $_SESSION["id"] = $database->get_user_information("id", "name", $_POST["name"])[0]["id"];
 
-                    header("Location: /Forum/Controllers/controller_page_accueil.php");
-                    exit();
-                }
+                header("Location: /Forum/Controllers/controller_page_accueil.php");
+                exit();
             } else {
-                echo "error password";
+                echo "ERROR PASSWORD: <br>";
+                if ($_POST["password"] != $_POST["password_verification"]) {
+                    echo "PASSWORDS NEED TO MATCH <br>";
+                }
+                if (strlen($_POST["password"]) < $password_limit_size_min) {
+                    echo "PASSWORD NEED TO CONTAIN AT LEAST " . $password_limit_size_min . " CARACTERS <br>";
+                }
             }
         } else {
-            echo "error name or mail";
+            echo "error name or mail: <br>";
+            if ($request_test_name[0]["name"] == $_POST["name"]) {
+                echo "NAME ALREADY TAKEN <br>";
+            }
+            if ($request_test_mail[0]["mail"] == $_POST["mail"]) {
+                echo "MAIL ALREADY TAKEN <br>";
+            }
         }
     }
-
-    // if ($_POST["type"] == "registration") {
-    //     if (isset($_POST["name"]) && isset($_POST["mail"]) && isset($_POST["password"]) && isset($_POST["password_verification"])) {
-    //         $result_name = $database->get_user_information("id", "name", $_POST["name"]);
-
-    //         if ($result_name != []) {
-    //             if ($_POST["password"] == $_POST["password_verification"]) {
-    //                 $database->add_user($_POST["name"], $_POST["mail"], $_POST["password"]);
-
-    //                 $result_name = $database->get_user_information("id", "name", $_POST["name"]);
-    //                 $result_password = $database->get_user_information("id", "password", $_POST["password"]);
-
-    //                 if ($result_name == $result_password && isset($result_name)) {
-    //                     $_SESSION["name"] = $database->get_user_information("name", "name", $_POST["name"])[0]["name"];
-    //                     $_SESSION["type"] = $database->get_user_information("type", "name", $_POST["name"])[0]["type"];
-    //                     $_SESSION["id"] = $database->get_user_information("id", "name", $_POST["name"])[0]["id"];
-
-    //                     header("Location: /Forum/Controllers/controller_page_accueil.php");
-    //                     exit();
-    //                 }
-    //             }
-    //         }
-    //     }
-
-    //     header("Refresh:0");
-    //     exit();
-    // }
-
-    // header("Location: /Forum/Controllers/controller_page_accueil.php");
-    // exit();
 }
 ?>
