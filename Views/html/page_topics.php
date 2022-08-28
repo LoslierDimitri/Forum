@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    
     <?php
     $path = $_SERVER["DOCUMENT_ROOT"];
     $path_new = $path . "./Forum/Views/components/component_navbar.php";

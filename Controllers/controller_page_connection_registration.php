@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
     }
+    
     if ($_POST["type"] == "registration") {
         $request_test_name = $database->get_user_information("name", "name", $_POST["name"]);
         $request_test_mail = $database->get_user_information("mail", "mail", $_POST["mail"]);
