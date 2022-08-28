@@ -27,6 +27,11 @@
     include($path_new);
     ?>
 
+    <p><?= $_SESSION["error"] ?></p>
+    <?php
+    $_SESSION["error"] = "";
+    ?>
+
     <?php
     $path = $_SERVER["DOCUMENT_ROOT"];
     $path_new = $path . "./Forum/Views/components/component_footer.php";

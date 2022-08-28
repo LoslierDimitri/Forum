@@ -7,6 +7,7 @@ include($path_new);
 <?php
 error_reporting(E_ALL ^ E_WARNING);
 $password_limit_size_min = 6;
+$error = "";
 
 /*
 get the connection to the database
@@ -36,12 +37,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result_name = $database->get_user_information("id", "name", $_POST["name"]);
         $result_password = $database->get_user_information("password", "id", $result_name[0]["id"]);
 
-        if (password_verify($_POST["password"], $result_password[0]["password"])) {
+        if (($result_password[0]["password"] != []) && (password_verify($_POST["password"], $result_password[0]["password"]))) {
             $_SESSION["name"] = $database->get_user_information("name", "name", $_POST["name"])[0]["name"];
             $_SESSION["type"] = $database->get_user_information("type", "name", $_POST["name"])[0]["type"];
             $_SESSION["id"] = $database->get_user_information("id", "name", $_POST["name"])[0]["id"];
 
             header("Location: /Forum/Controllers/controller_page_accueil.php");
+            exit();
+        } else {
+            $error = "WRONG CREDENTIALS";
+            $_SESSION["error"] = $error;
+            header("Refresh:0");
             exit();
         }
     }
@@ -66,22 +72,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header("Location: /Forum/Controllers/controller_page_accueil.php");
                 exit();
             } else {
-                echo "ERROR PASSWORD: <br>";
+                $error = "ERROR PASSWORD: <br>";
                 if ($_POST["password"] != $_POST["password_verification"]) {
-                    echo "PASSWORDS NEED TO MATCH <br>";
+                    $error .= "PASSWORDS NEED TO MATCH <br>";
                 }
                 if (strlen($_POST["password"]) < $password_limit_size_min) {
-                    echo "PASSWORD NEED TO CONTAIN AT LEAST " . $password_limit_size_min . " CARACTERS <br>";
+                    $error .= "PASSWORD NEED TO CONTAIN AT LEAST " . $password_limit_size_min . " CARACTERS <br>";
                 }
+                $_SESSION["error"] = $error;
+                header("Refresh:0");
+                exit();
             }
         } else {
-            echo "error name or mail: <br>";
+            $error = "ERROR NAME OR MAIL: <br>";
             if ($request_test_name[0]["name"] == $_POST["name"]) {
-                echo "NAME ALREADY TAKEN <br>";
+                $error .= "NAME ALREADY TAKEN <br>";
             }
             if ($request_test_mail[0]["mail"] == $_POST["mail"]) {
-                echo "MAIL ALREADY TAKEN <br>";
+                $error .= "MAIL ALREADY TAKEN <br>";
             }
+            $_SESSION["error"] = $error;
+            header("Refresh:0");
+            exit();
         }
     }
 }
