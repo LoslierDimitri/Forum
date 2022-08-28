@@ -12,6 +12,7 @@ class Comment
     public $id_user;
     public $id_topic;
     public $date;
+    public $User;
 
     public function build($id, $text, $id_user, $id_topic, $date)
     {
@@ -20,6 +21,38 @@ class Comment
         $this->id_user = $id_user;
         $this->id_topic = $id_topic;
         $this->date = $date;
+
+        $database_user = new Database();
+        $this->User = new User();
+
+        $result_id = $id_user;
+        $result_image = $database_user->get_user_information("image", "id", $id_user);
+        $result_name = $database_user->get_user_information("name", "id", $id_user);
+        $result_mail = $database_user->get_user_information("mail", "id", $id_user);
+        $result_type = $database_user->get_user_information("type", "id", $id_user);
+        $result_password = $database_user->get_user_information("password", "id", $id_user);
+
+        $this->User->build($result_id, $result_image, $result_name, $result_mail, $result_type, $result_password);
+    }
+}
+
+class User
+{
+    public $id;
+    public $image;
+    public $name;
+    public $mail;
+    public $type;
+    public $password;
+
+    public function build($id, $image, $name, $mail, $type, $password)
+    {
+        $this->id = $id;
+        $this->image = $image;
+        $this->name = $name;
+        $this->mail = $mail;
+        $this->type = $type;
+        $this->password = $password;
     }
 }
 ?>

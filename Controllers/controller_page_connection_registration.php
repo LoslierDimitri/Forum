@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // echo "</pre>";
         // die();
 
-        if ($result_name == $result_password && isset($result_name)) {
+        if ($result_name == $result_password && $result_name != []) {
             $_SESSION["name"] = $database->get_user_information("name", "name", $_POST["name"])[0]["name"];
             $_SESSION["type"] = $database->get_user_information("type", "name", $_POST["name"])[0]["type"];
             $_SESSION["id"] = $database->get_user_information("id", "name", $_POST["name"])[0]["id"];
@@ -52,24 +52,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // echo $_SESSION["type"];
             // echo $_SESSION["id"];
             // die();
-            
+
             header("Location: /Forum/Controllers/controller_page_accueil.php");
             exit();
         }
     }
     if ($_POST["type"] == "registration") {
-        $database->add_user($_POST["name"], $_POST["mail"], $_POST["password"]);
+        $request_test_name = $database->get_user_information("name", "name", $_POST["name"]);
+        $request_test_mail = $database->get_user_information("mail", "mail", $_POST["mail"]);
 
-        $result_name = $database->get_user_information("id", "name", $_POST["name"]);
-        $result_password = $database->get_user_information("id", "password", $_POST["password"]);
+        if ($request_test_name != $_POST["name"] || $request_test_mail != $_POST["mail"]) {
+            if ($_POST["password"] == $_POST["password_verification"]) {
+                $database->add_user($_POST["name"], $_POST["mail"], $_POST["password"]);
 
-        if ($result_name == $result_password && isset($result_name)) {
-            $_SESSION["name"] = $database->get_user_information("name", "name", $_POST["name"])[0]["name"];
-            $_SESSION["type"] = $database->get_user_information("type", "name", $_POST["name"])[0]["type"];
-            $_SESSION["id"] = $database->get_user_information("id", "name", $_POST["name"])[0]["id"];
-            
-            header("Location: /Forum/Controllers/controller_page_accueil.php");
-            exit();
+                $result_name = $database->get_user_information("id", "name", $_POST["name"]);
+                $result_password = $database->get_user_information("id", "password", $_POST["password"]);
+
+                if ($result_name == $result_password && isset($result_name)) {
+                    $_SESSION["name"] = $database->get_user_information("name", "name", $_POST["name"])[0]["name"];
+                    $_SESSION["type"] = $database->get_user_information("type", "name", $_POST["name"])[0]["type"];
+                    $_SESSION["id"] = $database->get_user_information("id", "name", $_POST["name"])[0]["id"];
+
+                    header("Location: /Forum/Controllers/controller_page_accueil.php");
+                    exit();
+                }
+            } else {
+                echo "error password";
+            }
+        } else {
+            echo "error name or mail";
         }
     }
 
