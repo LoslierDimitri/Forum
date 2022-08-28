@@ -3,6 +3,7 @@ class Database
 {
     private $connection;
 
+    //---------------------------------------------------------------------------------------------------------------------------------
     /*
     create the connection
     */
@@ -42,6 +43,7 @@ class Database
         return null;
     }
 
+    //---------------------------------------------------------------------------------------------------------------------------------
     /*
     get topics information
         id
@@ -109,6 +111,7 @@ class Database
         $this->connection = $this->delete_connection();
     }
 
+    //---------------------------------------------------------------------------------------------------------------------------------
     /*
     add a topic
     */
@@ -170,6 +173,7 @@ class Database
         $this->connection = $this->delete_connection();
     }
 
+    //---------------------------------------------------------------------------------------------------------------------------------
     /*
     update user
     */
@@ -191,15 +195,55 @@ class Database
         $this->connection = $this->delete_connection();
     }
 
-    public function remove_topic($id_topic)
+    //---------------------------------------------------------------------------------------------------------------------------------
+    /*
+    delete topic
+    */
+    public function delete_topic($id_topic)
     {
+        $this->connection = $this->set_connection();
+
+        if ($this->connection != null) {
+            $req = 'delete from topics where topics.id=:id_topic;';
+            $stmt = $this->connection->prepare($req);
+            $stmt->bindValue(":id_topic", $id_topic);
+            $stmt->execute();
+
+            return;
+        }
+
+        $this->connection = $this->delete_connection();
     }
 
-    public function remove_comment($id_comment)
+    public function delete_comment($id_comment)
     {
+        $this->connection = $this->set_connection();
+
+        if ($this->connection != null) {
+            $req = 'delete from comments where comments.id=:id_comment;';
+            $stmt = $this->connection->prepare($req);
+            $stmt->bindValue(":id_comment", $id_comment);
+            $stmt->execute();
+
+            return;
+        }
+
+        $this->connection = $this->delete_connection();
     }
 
-    public function remove_user($id_user)
+    public function delete_user($name_user)
     {
+        $this->connection = $this->set_connection();
+
+        if ($this->connection != null) {
+            $req = 'delete from users where users.name=:name_user;';
+            $stmt = $this->connection->prepare($req);
+            $stmt->bindValue(":name_user", $name_user);
+            $stmt->execute();
+
+            return;
+        }
+
+        $this->connection = $this->delete_connection();
     }
 }

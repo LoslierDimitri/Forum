@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    
+
     <?php
     $path = $_SERVER["DOCUMENT_ROOT"];
     $path_new = $path . "./Forum/Views/components/component_navbar.php";
@@ -30,6 +30,11 @@
     $path = $_SERVER["DOCUMENT_ROOT"];
     $path_new = $path . "./Forum/Views/components/component_form_delete_comment.php";
     include($path_new);
+    ?>
+
+    <p><?= $_SESSION["error"] ?></p>
+    <?php
+    $_SESSION["error"] = "";
     ?>
 
     <?php
