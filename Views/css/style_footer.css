@@ -1,0 +1,12 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #8880cc;
+}
+
+.m_l {
+  margin-left: 10px;
+}
+.m_r {
+  margin-right: 10px;
+}

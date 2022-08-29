@@ -25,7 +25,7 @@ class Topic
 ?>
 
 <?php
-error_reporting(E_ALL ^ E_WARNING);
+// error_reporting(E_ALL ^ E_WARNING);
 /*
 get the connection to the database
 */
@@ -98,7 +98,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $database->add_comment($_POST["comment_text"], $_SESSION["id"], $new_topic_id);
 
-    header("Location: ./controller_page_topics.php?topic_id=" . $new_topic_id . "");
+    // echo $new_topic_id . "<br>";
+    // echo "Location: /Forum/Controllers/controller_page_topics.php?topic_id=" . $new_topic_id . "";
+    // die();
+    // header("Refresh:0");
+    // exit();
+    // echo "here <br>";
+    // die();
+
+    echo ("<script>location.href = '/Forum/Controllers/controller_page_topics.php?topic_id=$new_topic_id';</script>");
     exit();
+    // header("Location: /Forum/Controllers/controller_page_topics.php?topic_id=" . $new_topic_id . "");
+    // exit();
 }
 ?>

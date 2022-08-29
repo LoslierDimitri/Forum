@@ -1,7 +1,11 @@
 <?php
-$path = $_SERVER["DOCUMENT_ROOT"];
-$path_new = $path . "./Forum/Views/components/component_connection_status.php";
-include($path_new);
+// $path = $_SERVER["DOCUMENT_ROOT"];
+// $path_new = $path . "./Forum/Views/components/component_connection_status.php";
+// include($path_new);
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <?php
@@ -153,7 +157,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $database->add_comment($_POST["comment_text"], $_SESSION["id"], $topic_id);
 
-    header("Refresh:0");
+    echo ("<script>location.href = '/Forum/Controllers/controller_page_topics.php?topic_id=$topic_id';</script>");
     exit();
+    // header("Refresh:0");
+    // exit();
 }
 ?>
