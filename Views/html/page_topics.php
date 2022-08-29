@@ -44,8 +44,8 @@
                 <?php
                     }
                     ?>
-                <p>date: <?= $Comment_table[$i]->date ?></p>
-                <p> text: <?= $Comment_table[$i]->text ?></p>
+                <p>Date: <?= $Comment_table[$i]->date ?></p>
+                <p> <?= $Comment_table[$i]->text ?></p>
 
                 <!-- id_user: <? //= $Comment_table[$i]->id_user 
                                     ?></p> -->

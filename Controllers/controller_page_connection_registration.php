@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
     }
-    
+
     if ($_POST["type"] == "registration") {
         $request_test_name = $database->get_user_information("name", "name", $_POST["name"]);
         $request_test_mail = $database->get_user_information("mail", "mail", $_POST["mail"]);
@@ -69,6 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION["name"] = $database->get_user_information("name", "name", $_POST["name"])[0]["name"];
                 $_SESSION["type"] = $database->get_user_information("type", "name", $_POST["name"])[0]["type"];
                 $_SESSION["id"] = $database->get_user_information("id", "name", $_POST["name"])[0]["id"];
+
+                $database->update_user($_SESSION["id"], "image", "unknow.png");
 
                 header("Location: /Forum/Controllers/controller_page_accueil.php");
                 exit();
