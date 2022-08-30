@@ -1,7 +1,11 @@
 <?php
-$path = $_SERVER["DOCUMENT_ROOT"];
-$path_new = $path . "./Forum/Views/components/component_connection_status.php";
-include($path_new);
+// $path = $_SERVER["DOCUMENT_ROOT"];
+// $path_new = $path . "./Forum/Views/components/component_connection_status.php";
+// include($path_new);
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <?php
@@ -60,5 +64,7 @@ include($path_new);
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $database->update_user($_SESSION["id"], "image", $_POST["image"]);
+    echo ("<script>location.href = '/Forum/Controllers/controller_page_account.php';</script>");
+    exit();
 }
 ?>

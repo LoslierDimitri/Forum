@@ -1,7 +1,7 @@
 <?php
 if (isset($_SESSION["id"]) == false) {
 ?>
-    <p>NOT CONNECTED</p>
+<p class="form_not_connected flex jc_c">You need to be connected to create a new topic</p>
 <?php
 }
 ?>
@@ -9,11 +9,11 @@ if (isset($_SESSION["id"]) == false) {
 <?php
 if (isset($_SESSION["id"])) {
 ?>
-    <form class="flex col_100" action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
-        <input class="f_l col_2" type="text" name="topic_name" value="" placeholder="Topic name">
-        <input class="f_l col_7" type="text" name="comment_text" value="" placeholder="Comment">
-        <button class="admin_btn btn f_l col_1" type="submit">Submit</button>
-    </form>
+<form class="flex col_10" action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
+    <input class="f_l col_2 form_input" type="text" name="topic_name" value="" placeholder="Topic name">
+    <input class="f_l col_4 form_input" type="text" name="comment_text" value="" placeholder="Comment">
+    <button class="form_btn f_l" type="submit">Submit</button>
+</form>
 <?php
 }
 ?>

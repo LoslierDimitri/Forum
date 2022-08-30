@@ -1,9 +1,11 @@
 <?php
+// $path = $_SERVER["DOCUMENT_ROOT"];
+// $path_new = $path . "./Forum/Views/components/component_connection_status.php";
+// include($path_new);
 
-?><?php
-$path = $_SERVER["DOCUMENT_ROOT"];
-$path_new = $path . "./Forum/Views/components/component_connection_status.php";
-include($path_new);
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <?php

@@ -1,11 +1,4 @@
-.account_img {
-  margin-top: 50px;
-  width: 200px;
-  border: 1px solid black;
-  border-radius: 500px;
-}
-
-.account_info {
+.topic {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
@@ -19,7 +12,19 @@
   border-radius: 20px;
 
   min-height: 100px;
-  max-width: 500px;
 
   background-color: #cbc7f0;
+}
+
+.topic a,
+.topic p {
+  font-size: 14px;
+  font-family: "Mulish", sans-serif;
+
+  text-decoration: none;
+  color: black;
+}
+
+.topic_group {
+  margin-bottom: 60px;
 }

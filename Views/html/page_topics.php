@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="/Forum/Views/css/style_footer.css">
     <link rel="stylesheet" href="/Forum/Views/css/style_grid.css">
 
-    <link rel="stylesheet" href="/Forum/Views/css/style_form_new_topic.css">
     <link rel="stylesheet" href="/Forum/Views/css/style_topic.css">
+    <link rel="stylesheet" href="/Forum/Views/css/style_form_comment.css">
     <title>Forum topic</title>
 </head>
 
@@ -40,7 +40,7 @@
                 <?php
                     if (isset($_SESSION["type"]) && $_SESSION["type"] == "a") {
                     ?>
-                <p>id: <?= $Comment_table[$i]->id ?></p>
+                <p>ID: <?= $Comment_table[$i]->id ?></p>
                 <?php
                     }
                     ?>
@@ -59,7 +59,7 @@
                     }
                     ?>
                 <!-- <p>IMAGE:</p> -->
-                <img class="img_comment flex jc_c m_a"
+                <img class="comment_img flex jc_c m_a"
                     src="../Views/images/<?= $Comment_table[$i]->User->image[0]["image"] ?>" alt="">
                 <p class="flex jc_c m_a"><?= $Comment_table[$i]->User->name[0]["name"] ?></p>
                 <!-- <p>MAIL: <? //= $Comment_table[$i]->User->mail[0]["mail"] 

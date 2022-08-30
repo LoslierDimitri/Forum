@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="/Forum/Views/css/style_footer.css">
     <link rel="stylesheet" href="/Forum/Views/css/style_grid.css">
 
-    <link rel="stylesheet" href="/Forum/Views/css/style_form_new_topic.css">
-    <link rel="stylesheet" href="/Forum/Views/css/style_topic.css">
+    <link rel="stylesheet" href="/Forum/Views/css/style_accueil.css">
+    <link rel="stylesheet" href="/Forum/Views/css/style_form_topic.css">
     <title>Forum accueil</title>
 </head>
 

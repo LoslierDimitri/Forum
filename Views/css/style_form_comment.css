@@ -1,4 +1,4 @@
-.form_registration_input {
+.form_input {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 30px;
@@ -12,7 +12,13 @@
   justify-content: center;
 }
 
-.form_registration_btn {
+.form_not_connected {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.form_btn {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 30px;
@@ -25,11 +31,4 @@
   border-radius: 50px;
   color: black;
   background-color: #cc8080;
-}
-
-.form_registration_label {
-  margin: 10px;
-  padding: 10px;
-  margin-bottom: 0;
-  padding-bottom: 0;
 }

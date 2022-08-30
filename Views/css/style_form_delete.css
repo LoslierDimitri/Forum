@@ -1,4 +1,4 @@
-.form_registration_input {
+.form_delete_input {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 30px;
@@ -12,7 +12,13 @@
   justify-content: center;
 }
 
-.form_registration_btn {
+.form_not_connected {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.form_delete_btn {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 30px;
@@ -27,7 +33,7 @@
   background-color: #cc8080;
 }
 
-.form_registration_label {
+.form_delete_label {
   margin: 10px;
   padding: 10px;
   margin-bottom: 0;
