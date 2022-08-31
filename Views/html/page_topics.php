@@ -18,7 +18,6 @@
 </head>
 
 <body>
-
     <?php
     $path = $_SERVER["DOCUMENT_ROOT"];
     $path_new = $path . "./Forum/Views/components/component_navbar.php";
@@ -59,9 +58,21 @@
                     }
                     ?>
                 <!-- <p>IMAGE:</p> -->
-                <img class="comment_img flex jc_c m_a"
+                <?php
+                    if ($Comment_table[$i]->User->image[0]["image"] != []) {
+                    ?>
+                <img class="comment_img flex jc_c m_a comment_img_border"
                     src="../Views/images/<?= $Comment_table[$i]->User->image[0]["image"] ?>" alt="">
                 <p class="flex jc_c m_a"><?= $Comment_table[$i]->User->name[0]["name"] ?></p>
+                <?php
+                    } else {
+                    ?>
+                <img class="comment_img flex jc_c m_a" src="../Views/images/delete.svg" alt="">
+                <p class="flex jc_c m_a">This account has been deleted</p>
+                <?php
+                    }
+                    ?>
+
                 <!-- <p>MAIL: <? //= $Comment_table[$i]->User->mail[0]["mail"] 
                                     ?></p> -->
                 <?php
