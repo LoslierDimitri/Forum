@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="/Forum/Views/css/style_form_delete.css">
     <title>Forum administration</title>
+    <link rel="icon" href="/Forum/Views/images/icon.png">
 </head>
 
 <body>

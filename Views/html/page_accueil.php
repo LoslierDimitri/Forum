@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/Forum/Views/css/style_accueil.css">
     <link rel="stylesheet" href="/Forum/Views/css/style_form_topic.css">
     <title>Forum accueil</title>
+    <link rel="icon" href="/Forum/Views/images/icon.png">
 </head>
 
 <body>

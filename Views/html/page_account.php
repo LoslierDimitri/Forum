@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/Forum/Views/css/style_account.css">
     <link rel="stylesheet" href="/Forum/Views/css/style_form_change_image.css">
     <title>Forum account</title>
+    <link rel="icon" href="/Forum/Views/images/icon.png">
 </head>
 
 <body>

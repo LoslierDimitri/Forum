@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/Forum/Views/css/style_topic.css">
     <link rel="stylesheet" href="/Forum/Views/css/style_form_comment.css">
     <title>Forum topic</title>
+    <link rel="icon" href="/Forum/Views/images/icon.png">
 </head>
 
 <body>
