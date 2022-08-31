@@ -13,7 +13,7 @@
 
   min-height: 100px;
 
-  background-color: #cbc7f0;
+  background-color: #f0d9c7;
 }
 
 .comment_r {
@@ -32,7 +32,7 @@
 
   min-height: 100px;
 
-  background-color: #cbc7f0;
+  background-color: #f0d9c7;
 }
 
 .comment_img {
@@ -42,4 +42,8 @@
 
 .comment_img_border {
   border: 1px solid black;
+}
+
+.topic_group {
+  margin-bottom: 50px;
 }

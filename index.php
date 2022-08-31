@@ -6,13 +6,16 @@ header("Location: ./Controllers/controller_page_accueil.php");
 /*
 https://face.co/indexfr.html
 
-blue
-#8880cc
+dark
+#cc9c80
 
-light blue
-#cbc7f0
+light
+#f0d9c7
+
+very light
+#f7f0e7
 
 red
-#cc8080
+#ce7171
 */
 ?>

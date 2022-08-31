@@ -13,7 +13,7 @@
 
   min-height: 100px;
 
-  background-color: #cbc7f0;
+  background-color: #f0d9c7;
 }
 
 .topic a,
@@ -23,8 +23,4 @@
 
   text-decoration: none;
   color: black;
-}
-
-.topic_group {
-  margin-bottom: 60px;
 }
