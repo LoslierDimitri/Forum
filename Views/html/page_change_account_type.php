@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="/Forum/Views/css/style_form_change_account_type.css">
     <title>Forum change account type</title>
-    <link rel="icon" href="/Forum/Views/images/icon.png">
+    <link rel="icon" href="/Forum/Views/images/site/icon.png">
 </head>
 
 <body>

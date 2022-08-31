@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/Forum/Views/css/style_form_connection.css">
     <link rel="stylesheet" href="/Forum/Views/css/style_form_registration.css">
     <title>Forum connection registration</title>
-    <link rel="icon" href="/Forum/Views/images/icon.png">
+    <link rel="icon" href="/Forum/Views/images/site/icon.png">
 </head>
 
 <body>

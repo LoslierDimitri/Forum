@@ -7,9 +7,11 @@ $files = scandir($dir, 1);
     <select class="form_change_img_select" name="image" id="image">
         <?php
         for ($i = 0; $i < count($files) - 2; $i++) {
+            if ($files[$i] != "site") {
         ?>
         <option value=<?= $files[$i] ?>><?= $files[$i] ?></option>
         <?php
+            }
         }
         ?>
     </select>

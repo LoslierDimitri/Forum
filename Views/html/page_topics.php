@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/Forum/Views/css/style_topic.css">
     <link rel="stylesheet" href="/Forum/Views/css/style_form_comment.css">
     <title>Forum topic</title>
-    <link rel="icon" href="/Forum/Views/images/icon.png">
+    <link rel="icon" href="/Forum/Views/images/site/icon.png">
 </head>
 
 <body>
@@ -68,7 +68,7 @@
                 <?php
                     } else {
                     ?>
-                <img class="comment_img flex jc_c m_a" src="../Views/images/delete.svg" alt="">
+                <img class="comment_img flex jc_c m_a" src="../Views/images/site/delete.svg" alt="">
                 <p class="flex jc_c m_a">This account has been deleted</p>
                 <?php
                     }

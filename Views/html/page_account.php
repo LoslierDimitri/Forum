@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/Forum/Views/css/style_account.css">
     <link rel="stylesheet" href="/Forum/Views/css/style_form_change_image.css">
     <title>Forum account</title>
-    <link rel="icon" href="/Forum/Views/images/icon.png">
+    <link rel="icon" href="/Forum/Views/images/site/icon.png">
 </head>
 
 <body>
@@ -42,7 +42,13 @@
             include($path_new);
             ?>
             <p>Name: <?= $User->name[0]["name"] ?></p>
+            <?php
+            if ((isset($_SESSION["type"]) && $_SESSION["type"] == "a") || ($User->id == $_SESSION["id"])) {
+            ?>
             <p>Mail: <?= $User->mail[0]["mail"] ?></p>
+            <?php
+            }
+            ?>
             <?php
             if ($User->type[0]["type"] == "a") {
             ?>

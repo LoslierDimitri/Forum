@@ -19,3 +19,23 @@ red
 #ce7171
 */
 ?>
+
+<?php
+/*
+account on the site
+
+alpha
+beta
+charlie
+delta
+epsilon
+zeta
+
+password:
+<name>123456
+
+admin:
+epsilon
+
+*/
+?>
